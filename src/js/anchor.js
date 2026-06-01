@@ -1,5 +1,5 @@
 const anchorLinks = document.querySelectorAll('a[href^="#"]');
-const header = document.querySelector('.header'); // Укажите класс вашей шапки
+const header = document.querySelector('.header');
 
 if (anchorLinks.length > 0) {
   anchorLinks.forEach(link => {
@@ -12,13 +12,13 @@ if (anchorLinks.length > 0) {
         const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
-          // Получаем высоту шапки (если шапка есть, иначе 0)
+          
           const headerHeight = header ? header.offsetHeight : 0;
           
-          // Считаем позицию элемента на странице с учетом прокрутки
+          
           const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
           
-          // Вычитаем высоту шапки из финальной точки
+          
           const offsetPosition = elementPosition - headerHeight;
 
           window.scrollTo({

@@ -1,14 +1,19 @@
 import "./menu";
+import "./popup";
+import "./select";
+import "./input";
+import "./lang-switcher";
+import "./anchor";
+
+
+import "./fancybox";
 import "./word-slider";
 import "./hero-slider";
 import "./docs-slider";
-import "./fancybox";
-import "./lang-switcher";
 import "./roadmap";
 import "./experts";
 import "./faq";
-import "./select";
-import "./input";
-import "./popup";
-import "./anchor";
+
+
+
 import "/sass/main.sass";

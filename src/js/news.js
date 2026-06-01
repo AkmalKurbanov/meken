@@ -1,8 +1,12 @@
 import "./menu";
-import "./fancybox";
-import "./lang-switcher";
+import "./popup";
 import "./select";
 import "./input";
-import "./popup";
+import "./lang-switcher";
 import "./anchor";
+
+
+
+
+
 import "/sass/news.sass";
