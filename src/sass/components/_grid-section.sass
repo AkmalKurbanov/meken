@@ -1,0 +1,170 @@
+@use '../settings/shared' as v
+
+.grid
+  margin-bottom: v.to-rem(80)
+  padding-top: v.to-rem(56)
+
+  @include v.media('large')
+    padding-top: v.to-rem(120)
+    
+  .parent
+    display: flex
+    flex-direction: column
+    grid-template-columns: repeat(4, 1fr)
+    grid-auto-rows: auto
+    gap: v.to-rem(16)
+
+    @include v.media('desktop')
+      display: grid
+      gap: v.to-rem(24)
+
+  &__cell-img
+    margin: v.to-rem(10) auto 0
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+    img
+      object-fit: contain
+      width: 100%
+      height: 100%
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+
+  &__cell-txt
+    padding: v.to-rem(24) v.to-rem(24) 0 v.to-rem(24)
+  
+  &__cell
+    background-color: v.$primary-color
+    border-radius: v.to-rem(24)
+    overflow: hidden
+    position: relative
+
+    @include v.media('desktop')
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      gap: v.to-rem(24)
+
+    @include v.media('large')
+      display: block
+      gap: 0
+
+    &--first
+
+      @include v.media('desktop')
+        grid-column: span 2
+        grid-row: span 1
+
+      @include v.media('large')
+        grid-column: span 2
+        grid-row: span 2
+
+
+      .grid__cell-img
+        max-width: v.to-rem(302)
+        margin-bottom: v.to-rem(16)
+
+        @include v.media('large')
+          max-width: v.to-rem(564)
+          margin-top: v.to-rem(30)
+          margin-bottom: v.to-rem(40)
+
+
+    &--second
+      @include v.media('desktop')
+        min-height: v.to-rem(300)
+        grid-column: span 2
+        grid-row: span 1
+
+      @include v.media('large')
+        grid-column: span 2
+
+      .grid__cell-img
+        max-width: v.to-rem(321)
+
+        @include v.media('desktop')
+          max-width: v.to-rem(379)
+
+        @include v.media('large')
+          margin-right: v.to-rem(23)
+          margin-top:  v.to-rem(-75)
+        
+
+      p
+        @include v.media('desktop')
+          max-width: v.to-rem(360)
+          width: 100%
+
+    &--third
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      @include v.media('desktop')
+        grid-column: span 2
+        grid-row: span 1
+      
+      @include v.media('large')
+        grid-column: initial
+        grid-row: initial
+
+  
+
+      .grid__cell-img
+        max-width: v.to-rem(267)
+        margin-bottom: v.to-rem(-10)
+
+        @include v.media('large')
+          max-width: v.to-rem(229)
+
+      .grid__cell-title
+        @include v.media('large')
+          font-size: v.to-rem(28)
+          line-height: v.to-rem(32)
+
+    &--fourth
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      @include v.media('desktop')
+        grid-column: span 2
+        grid-row: span 1
+
+      @include v.media('large')
+        grid-column: initial
+        grid-row: initial
+
+      .grid__cell-img
+        max-width: v.to-rem(353)
+
+        @include v.media('large')
+          max-width: v.to-rem(291)
+
+      
+      .grid__cell-title
+        @include v.media('large')
+          font-size: v.to-rem(28)
+          line-height: v.to-rem(32)
+
+  &__cell-title
+    color: #fff
+    font-size: v.to-rem(24)
+    line-height: v.to-rem(32)
+    font-weight: 700
+    margin: 0 0 v.to-rem(8) 0
+
+    @include v.media('large')
+      font-size: v.to-rem(40)
+      line-height: v.to-rem(48)
+
+  p
+    color: #fff
+    font-size: v.to-rem(15.4)
+    line-height: v.to-rem(22)
+    font-weight: 500
+    margin: 0

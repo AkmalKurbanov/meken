@@ -1,0 +1,57 @@
+@use '../settings/shared' as v
+
+.footer
+  color: #fff
+  font-size: v.to-rem(16)
+  line-height: v.to-rem(22)
+  font-weight: 500
+  background-color: #00122D
+
+  &__logo
+    margin-bottom: v.to-rem(16)
+    display: inline-flex
+    align-items: center
+    justify-content: center
+
+  p
+    margin: 0
+  a
+    color: #fff
+    text-decoration: none
+    transition: color .3s ease
+
+    &:hover
+      color: v.$secondary-color
+
+  address
+    font-style: normal
+
+  &__top
+    padding: v.to-rem(40) 0 v.to-rem(16)
+
+  &__bottom
+    text-align: center
+    border-top: 1px solid #192A42
+    padding: v.to-rem(16) 0  
+
+  &__flex-wrap
+    display: flex
+    flex-direction: column
+    row-gap: v.to-rem(40)
+
+    @include v.media('desktop')
+      flex-direction: row
+      column-gap: v.to-rem(32)
+
+  &__flex-item
+    display: flex
+    flex-direction: column
+    row-gap: v.to-rem(16)
+
+    @include v.media('desktop')
+      justify-content: space-between
+      width: 33.33%
+
+
+    &:last-child
+      margin-bottom: 0

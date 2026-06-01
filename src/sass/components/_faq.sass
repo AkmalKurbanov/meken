@@ -1,0 +1,84 @@
+@use '../settings/shared' as v
+
+.faq
+  .accordion
+    display: flex
+    flex-direction: column
+    gap: v.to-rem(8)
+  
+    @include v.media('large')
+      gap: v.to-rem(16)
+
+    &__item
+      display: flex
+      flex-direction: column
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02)
+      overflow: hidden
+      transition: background-color 0.3s ease
+      @include v.media('large')
+        border-radius: v.to-rem(16) 
+
+    &__trigger
+      width: 100%
+      display: flex
+      align-items: center
+      justify-content: space-between
+      background: none
+      border: none
+      cursor: pointer
+      text-align: left
+      font-size: v.to-rem(15)
+      line-height: v.to-rem(24)
+      font-weight: 600
+      padding: v.to-rem(16) v.to-rem(16)
+      background-color: #fff
+      border-radius: v.to-rem(16)
+
+      @include v.media('large')
+        font-size: v.to-rem(16)
+        padding: v.to-rem(16) v.to-rem(24)
+        border-radius: 0
+
+    &__icon
+      transition: transform 0.3s ease
+      flex-shrink: 0
+      margin-left: v.to-rem(10)
+      width: v.to-rem(24)
+      height: v.to-rem(24)
+
+    &__content
+      height: 0
+      overflow: hidden
+      transition: height 0.3s ease-in-out
+      background-color: #fff
+      border-radius: v.to-rem(16)
+      
+      @include v.media('large')
+        border-radius: 0
+
+    &__inner
+      font-size: v.to-rem(15.4)
+      line-height: v.to-rem(22)
+      font-weight: 500
+      padding: v.to-rem(16)
+
+      @include v.media('large')
+        font-size: v.to-rem(16)
+        padding: 0 v.to-rem(24) v.to-rem(16)
+
+      p
+        margin: 0
+
+    &__item.is-open
+      .accordion__content
+        margin-top: v.to-rem(11)
+
+        @include v.media('large')
+          margin-top: 0
+        
+      .accordion__icon
+        transform: rotate(180deg)
+        color: v.$primary-color
+
+      .accordion__trigger
+        color: v.$primary-color

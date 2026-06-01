@@ -1,0 +1,42 @@
+@use '../settings/shared' as v
+
+.menu
+  background-color: v.$primary-color
+  position: fixed
+  top: calc(var(--header-height, 68px) - 1px)
+  left: 0
+  right: 0
+  bottom: 0
+  transform: translateY(-5px)
+  transition: transform .2s ease, opacity .2s ease
+  height: auto
+  // overflow-y: auto
+  z-index: 1000
+  pointer-events: none
+  opacity: 0
+  padding: v.to-rem(48) v.to-rem(32)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  row-gap: v.to-rem(100)
+
+  &__nav
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+      
+      li
+        margin-bottom: v.to-rem(32)
+        &:last-child
+          margin-bottom: 0
+        a
+          color: #fff
+          font-size: v.to-rem(20)
+          line-height: v.to-rem(24)
+          letter-spacing: v.to-rem(0.48)
+          font-weight: 500
+          text-decoration: none
+
+
+  

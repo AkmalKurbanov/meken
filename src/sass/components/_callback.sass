@@ -1,0 +1,72 @@
+@use '../settings/shared' as v
+.callback
+  padding: v.to-rem(80) 0
+  
+  @include v.media('large')
+    padding: v.to-rem(160) 0
+
+.callback-form
+  border-radius: v.to-rem(24)
+  padding: v.to-rem(64) v.to-rem(16)
+  background-color: v.$primary-color
+  
+  
+  @include v.media('desktop')
+    display: flex
+    // align-items: center
+    gap: v.to-rem(50)
+
+  @include v.media('large')
+    padding: v.to-rem(64) v.to-rem(120) v.to-rem(64) v.to-rem(80)
+    gap: v.to-rem(150)
+
+  &__top
+    flex-shrink: 0
+    margin-bottom: v.to-rem(48)
+
+    @include v.media('desktop')
+      margin-bottom: 0
+
+    .title
+      margin-bottom: v.to-rem(16)
+      @include v.media('desktop')
+        text-align: left
+        margin-bottom: v.to-rem(24)
+    
+    .subtitle
+      margin: 0
+
+      @include v.media('desktop')
+        text-align: left
+      
+  .input
+    margin-top: v.to-rem(12)
+    width: 100%
+    &:first-child
+      margin-top: 0
+
+    input
+      width: 100%  
+
+  &__add-info
+    margin-top: v.to-rem(24)
+
+    @include v.media('desktop')
+      display: flex
+      align-items: center
+      gap: v.to-rem(20)
+      margin-top: v.to-rem(24)
+
+    .btn
+      flex-shrink: 0  
+
+    p
+      font-size: v.to-rem(12)
+      line-height: v.to-rem(16)
+      font-weight: 400
+      color: #8399BA
+      margin: 0
+      margin-top:  v.to-rem(12)
+
+      @include v.media('desktop')
+        margin-top:  0

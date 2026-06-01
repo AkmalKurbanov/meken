@@ -1,0 +1,94 @@
+@use '../settings/shared' as v
+
+.header
+  background-color: v.$primary-color
+  position: sticky
+  top: 0
+  z-index: 1001
+
+  .logo
+    display: flex
+    align-items: center
+    justify-content: center
+
+    @include v.media('desktop')
+      max-width: v.to-rem(213)
+      width: 100%
+      height: v.to-rem(56)
+      img
+        width: 100%
+        object-fit: cover
+        height: 100%
+
+  &__flex-wrap
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: v.to-rem(16) v.to-rem(24)
+
+    @include v.media('desktop')
+      padding: v.to-rem(24) v.to-rem(40)
+
+  &__burger
+    cursor: pointer
+    color: #fff
+    display: flex
+    align-items: center
+    justify-content: center
+
+    @include v.media('large')
+      display: none
+
+    .icon
+      width: v.to-rem(32)
+      height: v.to-rem(32)
+
+    .icon-cross
+      display: none  
+      
+
+  &__nav
+    display: none
+    flex: 1
+    padding: 0 v.to-rem(10)
+    justify-content: center
+    align-items: center
+
+    @include v.media('large')
+      display: flex
+
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+      display: flex
+      align-items: center
+      justify-content: center
+      background-color: rgba(0,0,0,0.2)
+      border-radius: v.to-rem(56)
+      padding: v.to-rem(4) v.to-rem(12)
+      
+      li
+        a
+          text-decoration: none
+          color: #fff
+          font-size: v.to-rem(15.4)
+          line-height: v.to-rem(24)
+          font-weight: 500
+          padding: v.to-em(12) v.to-em(16)
+          display: inline-block
+          transition: color .2s ease
+
+          &:hover
+            color: v.$secondary-color
+
+        &.active
+          a
+            color: v.$secondary-color
+
+  .controls
+    .lang-switcher,
+    .btn
+      display: none
+      @include v.media('large')
+        display: flex

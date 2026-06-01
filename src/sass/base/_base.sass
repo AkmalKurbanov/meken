@@ -1,0 +1,192 @@
+@use '../settings/shared' as v
+*
+  box-sizing: border-box
+
+html, body
+  margin: 0
+
+html
+  scroll-behavior: smooth
+
+body
+  font-family: v.$font-main
+  color: v.$text-color
+
+  &.menu-is-open
+    overflow: hidden
+    .menu
+      transform: translateY(0)
+      pointer-events: auto
+      opacity: 1
+
+    .header__burger
+      .icon-burger
+        display: none
+      .icon-cross
+        display: block
+
+  &.is-locked
+    overflow: hidden
+
+.container
+  max-width: v.$container-width
+  width: 100%
+  margin: 0 auto
+  padding: 0 v.to-rem(16)
+
+svg
+  display: inline-block
+  justify-content: center
+  align-items: center
+  max-width: 100%
+  max-height: 100%
+  fill: currentColor
+
+.controls
+  display: flex
+  column-gap: v.to-rem(16)
+
+.title
+  font-size: v.to-rem(32)
+  line-height: v.to-rem(40)
+  font-weight: 600
+  margin: 0 0 v.to-rem(48)
+
+  @include v.media('large')
+    font-size: v.to-rem(48)
+    line-height: v.to-rem(56)
+
+  &--light
+    color: #fff
+
+  &--centered
+    text-align: center
+
+.subtitle
+  font-size: v.to-rem(15.4)
+  line-height: v.to-rem(22)
+  font-weight: 500
+
+  &--light
+    color: #fff
+  &--centered
+    text-align: center
+
+.tag
+  font-size: v.to-rem(14)
+  line-height: v.to-rem(14)
+  font-weight: 600
+  color: #fff
+  padding: v.to-em(4) v.to-em(8)
+  border-radius: v.to-em(8)
+  display: inline-block
+
+  &--blue
+    background-color: #0057FF
+  &--red
+    background-color: #E65100
+  &--green
+    background-color: #00897B
+  &--gold
+    background-color: #C49000
+  &--gray
+    background-color: #455A64
+
+.section
+  &--bg
+    background-color: v.$section-bg
+    padding: v.to-em(64) 0
+
+.input
+  position: relative
+
+  label
+    position: absolute
+    left: v.to-rem(16)
+    top: 50%
+    transform: translateY(-50%)
+    color: #8399B9
+    font-size: v.to-rem(14)
+    pointer-events: none
+    transition: opacity 0.2s ease, visibility 0.2s ease
+
+    span
+      color: #D71F1F
+
+  input
+    min-height: v.to-rem(48)
+    padding: v.to-rem(13) v.to-rem(16)
+    border-radius: v.to-rem(16)
+    overflow: hidden
+    outline: none
+    border: none
+    font-size: v.to-rem(16)
+    border: 1px solid #CED6E3
+
+  input:focus + label,
+  &.is-filled label
+    opacity: 0
+    visibility: hidden
+
+.select
+  position: relative
+  max-height: v.to-rem(48)
+  background-color: #fff
+
+  &__selected-wrap
+    display: flex
+    align-items: center
+    justify-content: space-between
+    border-radius: v.to-rem(16)
+    border: 1px solid #CED6E3
+    padding: v.to-rem(13) v.to-rem(16)
+    cursor: pointer
+
+    .icon
+      width: v.to-rem(16)
+      height: v.to-rem(16)
+      margin-left: v.to-rem(10)
+      transition: rotate .3s ease
+
+  &__selected
+    color: #8399B9
+    font-size: v.to-rem(14)
+
+  &__dropdown
+    transition: opacity .3s ease, transform .3s ease, top .3s ease
+    border: 1px solid #CED6E3
+    border-radius: v.to-rem(16)
+    position: absolute
+    width: 100%
+    top: 100%
+    overflow: hidden
+    opacity: 0
+    pointer-events: none
+    background-color: #fff
+
+  &__list
+    margin: 0
+    padding: 0
+    list-style: none
+    cursor: pointer
+    max-height: v.to-rem(120)
+    overflow-y: auto
+
+  &__option
+    padding: v.to-rem(7) v.to-rem(16)
+    color: #8399B9
+    font-size: v.to-rem(14)
+    transition: background-color .3s ease
+
+    &:hover
+      background-color: #ced6e33b
+
+  &.is-open
+    .select__dropdown
+      opacity: 1
+      pointer-events: none
+      top: calc( 100% + 10px )
+      pointer-events: inherit
+
+    .icon
+      transform: rotate(180deg)

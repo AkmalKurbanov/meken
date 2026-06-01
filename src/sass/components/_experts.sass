@@ -1,0 +1,214 @@
+@use '../settings/shared' as v
+
+.experts
+  overflow: hidden
+  
+  &__slider
+    position: relative
+    
+    .swiper 
+      padding-bottom: v.to-rem(120)
+      overflow: visible
+      @include v.media('desktop')
+        padding-bottom: v.to-rem(50)
+
+
+  &__slider-arrow
+    width: v.to-rem(40)
+    height: v.to-rem(40)
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: v.$primary-color
+    border-radius: 100%
+    color: #fff
+    cursor: pointer
+    position: absolute
+    top: v.to-rem(152.5)
+    z-index: 1
+
+    @include v.media('desktop')
+      top: v.to-rem(276)
+
+    .icon
+      width: 24px
+
+    &.swiper-button-prev
+      transform: rotate(180deg)
+    &.swiper-button-next
+      right: 0
+
+    &.swiper-button-disabled
+      display: none  
+  
+  .swiper-pagination
+    top: auto
+    bottom: 0
+    transform: none
+    .swiper-pagination-bullet
+      background-color: #D9D9D9
+      opacity: 1
+      &.swiper-pagination-bullet-active
+        background-color: v.$primary-color
+
+  &__slider-item
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    text-align: center
+
+    @include v.media('desktop')
+      flex-direction: row-reverse
+      text-align: left
+      max-width: v.to-rem(964)
+      padding: 0 v.to-rem(50)
+      margin: 0 auto
+      justify-content: space-between
+
+    @include v.media('large')
+      padding: 0
+
+  &__opinion
+    position: relative
+
+    @include v.media('desktop')
+      max-width: v.to-rem(423)
+
+    &-decoration
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -42%)
+      width: v.to-rem(513)
+      height: v.to-rem(507)
+      pointer-events: none
+      
+      @include v.media('desktop')
+        width: v.to-rem(718)
+        height: v.to-rem(710)
+
+    &-text
+      p
+        font-size: v.to-rem(20)
+        line-height: v.to-rem(32)
+        font-weight: 600
+        margin-top: 0
+        margin-bottom: v.to-rem(20)
+
+        &:last-child
+          margin-bottom: 0
+
+    &-person
+      margin-top: v.to-rem(24)
+      display: none
+
+      @include v.media('desktop')
+        display: block
+
+      h4,p
+        font-size: v.to-rem(16)
+        line-height: v.to-rem(22)
+        margin: 0
+
+      h4
+        font-weight: 700
+      p
+        font-weight: 400
+        margin-top: v.to-rem(5)
+
+  &__video
+    max-width: v.to-rem(210)
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-bottom: v.to-rem(80)
+
+    @include v.media('desktop')
+      max-width: v.to-rem(360)
+      margin-bottom: 0
+
+    .experts__opinion-person
+      display: block
+      @include v.media('desktop')
+        display: none
+
+  .video-block
+    border-radius: v.to-rem(24)
+    overflow: hidden
+    width: 100%
+    height: v.to-rem(345)
+    position: relative
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+
+    @include v.media('desktop')
+      height: v.to-rem(592)
+
+    &::before
+      position: absolute
+      content: ''
+      width: 100%
+      height: 100%
+      background-color: rgba(0,0,0,.4)
+      z-index: 1
+      opacity: 1
+      transition: opacity .3s ease
+
+    video
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+    &__play-btn
+      position: absolute
+      z-index: 3
+      width: v.to-rem(56)
+      height: v.to-rem(56)
+      background: #fff
+      border: 10px solid #D9D9D9
+      border-radius: 50%
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease
+      box-shadow: 0 4px 20px rgba(0, 87, 255, 0.4)
+
+    svg
+      width: v.to-rem(17)
+      height: auto
+      transition: transform 0.2s ease
+
+      path
+        fill: #000
+
+    .icon-pause
+      display: none
+
+    .icon-play
+      margin-left: 4px
+
+    &.is-playing
+      &:before
+        opacity: 0
+
+      .video-block__play-btn
+        opacity: 0
+        visibility: hidden
+
+      .icon-play
+        display: none
+      .icon-pause
+        display: block
+
+      &:hover
+        .video-block__play-btn
+          opacity: 1
+          visibility: visible

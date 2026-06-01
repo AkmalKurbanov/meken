@@ -1,0 +1,31 @@
+@use '../settings/shared' as v
+
+.about
+  margin-bottom: v.to-rem(48)
+
+  &__intro
+    display: flex
+    flex-direction: column
+    row-gap: v.to-rem(32)
+    padding-top: v.to-rem(80)
+
+    @include v.media('desktop')
+      flex-direction: row
+      align-items: flex-start
+    img
+      max-width: v.to-rem(512)
+      width: 100%
+      margin: 0 auto
+    p
+      font-size: v.to-rem(28)
+      line-height: v.to-rem(48)
+      font-weight: 700
+      color: #061B31
+      margin: 0
+
+      i
+        font-family: "Caveat"
+        text-decoration: underline
+        font-size: v.to-rem(44)
+        letter-spacing: -2%
+

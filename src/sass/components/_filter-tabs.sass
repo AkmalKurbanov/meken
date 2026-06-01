@@ -1,0 +1,31 @@
+@use '../settings/shared' as v
+.filter-tabs-wrap
+  display: flex
+  align-items: center
+  justify-content: center
+  
+.filter-tabs
+  background-color: rgba(#083374, .1)
+  border-radius: v.to-rem(28)
+  padding: v.to-rem(8)
+  white-space: nowrap
+  overflow-x: auto
+  display: inline-block
+
+  &__btn
+    border-radius: v.to-rem(49)
+    color: v.$text-color
+    text-align: center
+    font-size: v.to-rem(15.4)
+    line-height: v.to-rem(24)
+    letter-spacing:  v.to-rem(.48)
+    font-weight: 600
+    padding: v.to-em(8) v.to-em(16)
+    cursor: pointer
+    transition: background-color .3s ease, color .3s ease
+
+    &:hover,
+    &.is-active
+      background-color: v.$primary-color
+      color: #fff
+

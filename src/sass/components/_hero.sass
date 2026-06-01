@@ -1,0 +1,305 @@
+@use '../settings/shared' as v  
+
+.hero
+  background-color: v.$primary-color
+  padding: 0 0 v.to-rem(50)
+  overflow: hidden
+  @include v.media('tablet')
+    position: relative
+    padding-bottom: 0
+
+  &__flex-wrap
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: v.to-rem(76) v.to-rem(20) v.to-rem(24)
+    row-gap: v.to-rem(20)
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px)
+    background-size: v.to-rem(76) v.to-rem(76)
+    background-position: 5px -2px
+    position: relative
+    overflow: hidden
+
+    @include v.media('tablet')
+      flex-direction: row
+      justify-content: space-around
+      padding-top: v.to-rem(5)
+      max-width: v.to-rem(1666)
+      width: 100%
+      margin: auto
+      padding: v.to-rem(76) v.to-rem(20) v.to-rem(120)
+
+    @include v.media('desktop')
+      background-size: v.to-rem(128) v.to-rem(128)
+
+    @include v.media('large')
+      background-position: 0 -2px
+      align-items: flex-start
+
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      border-radius: 771px
+      width: calc( 100% + 30px )
+      height: 60%
+      left: 50%
+      transform: translateX(-50%)
+
+    &::before
+      background: radial-gradient(50% 50% at 50% 50%, #083374 52.4%, rgba(8, 51, 116, 0.2) 100%)
+
+      top: v.to-rem(-20)
+
+    &::after
+      background: radial-gradient(50% 50% at 50% 50%, #083374 78.85%, rgba(8, 51, 116, 0.2) 100%)
+      bottom: v.to-rem(-30)
+
+    &:has(.hero__category:hover)
+      .hero__category:not(:hover)
+        opacity: 0.4
+        transition: opacity 0.5s ease
+
+  &__title-block
+    text-align: center
+    z-index: 1
+
+    @include v.media('large')
+      padding-top: v.to-rem(50)
+
+    h1,p
+      font-size: v.to-rem(30)
+      line-height: v.to-rem(35)
+      color: #fff
+      font-weight: 500
+      margin: 0
+
+      @include v.media('large')
+        font-size: v.to-rem(48)
+        line-height: v.to-rem(56)
+
+    h1
+      span
+        font-size: v.to-rem(75)
+        line-height: v.to-rem(75)
+        font-weight: 500
+        vertical-align: middle
+        font-family: 'Winsel'
+        display: block
+        margin-top: v.to-rem(15)
+
+        @include v.media('large')
+          font-size: v.to-rem(120)
+          line-height: v.to-rem(120)
+
+  &__cta
+    display: flex
+    align-items: center
+    flex-direction: column
+    margin-top: v.to-rem(24)
+    row-gap: v.to-rem(16)
+
+    @include v.media('tablet')
+      padding: v.to-rem(16) v.to-rem(16) v.to-rem(16) v.to-rem(32)
+      flex-direction: row
+      border-radius: v.to-rem(88)
+      background-color: rgba(0,0,0,0.2)
+      text-align: left
+      column-gap: v.to-rem(16)
+      max-width: v.to-rem(422)
+      width: 100%
+      margin: auto
+      margin-top: v.to-rem(40)
+
+    h2
+      font-size: v.to-rem(14)
+      font-weight: 600
+      line-height: v.to-rem(20)
+      color: rgba(255, 255, 255, 0.70)
+      margin: v.to-rem(20) 0 v.to-rem(16)
+      margin: 0
+      line-height: v.to-rem(24)
+
+  &__slogan
+    position: relative
+    height: v.to-rem(30)
+    display: flex
+    justify-content: center
+    overflow: hidden
+
+    @include v.media('large')
+      height: v.to-rem(50)
+
+    span
+      position: absolute
+      opacity: 0
+      transition: opacity .5s ease, transform .5s ease
+      transform: translateY(5px)
+      white-space: nowrap
+
+      &.is-visible
+        opacity: 1
+        transform: translateY(0)
+
+  &__categories
+    list-style: none
+    display: flex
+    column-gap: v.to-rem(30)
+    padding: 0
+    margin: 0
+    z-index: 1
+
+    @include v.media('tablet')
+      flex-direction: column
+      row-gap: v.to-rem(60)
+
+    &:first-child
+      @include v.media('desktop')
+        align-items: flex-start
+
+      .hero__category
+        &:nth-child(odd)
+          margin-top: v.to-rem(34)
+          @include v.media('tablet')
+            transform: rotate(8deg)
+            margin: 0
+
+          @include v.media('desktop')
+            margin-left: v.to-rem(130)
+
+        &:nth-child(even)
+          @include v.media('tablet')
+            transform: rotate(-8deg)
+
+        &:last-child
+          @include v.media('desktop')
+            margin-left: v.to-rem(180)
+
+        @include v.hover-only
+          transition: transform .7s ease
+          cursor: pointer
+
+          &:hover
+            transform: scale(1.3) rotate(0)
+            span
+              opacity: 1
+
+    &:last-child
+      @include v.media('desktop')
+        align-items: flex-end
+
+      .hero__category
+        &:nth-child(odd)
+          @include v.media('tablet')
+            transform: rotate(-8deg)
+
+          @include v.media('desktop')
+            margin-right: v.to-rem(130)
+
+        &:nth-child(even)
+          margin-top: v.to-rem(34)
+          @include v.media('tablet')
+            transform: rotate(8deg)
+            margin: 0
+
+        &:last-child
+          @include v.media('desktop')
+            margin-right: v.to-rem(180)
+
+        @include v.hover-only
+          transition: transform .7s ease
+          cursor: pointer
+
+          &:hover
+            transform: scale(1.3) rotate(0)
+            span
+              opacity: 1
+
+  &__category
+    text-align: center
+    transform-origin: center
+    
+    button
+      cursor: pointer
+
+    
+    &:first-child
+      transform: rotate(-8deg)
+
+    &:last-child
+      transform: rotate(8deg)
+
+    figure
+      margin: 0
+
+      img
+        object-fit: cover
+        width: v.to-rem(100)
+        height: v.to-rem(100)
+        aspect-ratio: 1 / 1
+        border-radius: v.to-rem(12)
+
+        @include v.media('tablet')
+          width: v.to-rem(130)
+          height: v.to-rem(130)
+
+        @include v.media('large')
+          width: v.to-rem(160)
+          height: v.to-rem(160)
+          border-radius: v.to-rem(20)
+
+      span
+        display: flex
+        align-items: center
+        justify-content: center
+        color: #fff
+        font-size: v.to-rem(12)
+        line-height: v.to-rem(18)
+        font-weight: 500
+        white-space: nowrap
+        margin-top: v.to-rem(4)
+        gap: v.to-rem(8)
+        transition: opacity .3s ease
+        opacity: 0
+        pointer-events: none
+
+        .icon
+          width: v.to-rem(14)
+          height: v.to-rem(14)
+
+
+  &__category-name
+    font-size: v.to-rem(8.76)
+    font-weight: 700
+    line-height: v.to-rem(12.5)
+    letter-spacing: v.to-rem(0.33)
+    color: rgba(255, 255, 255, 0.70)
+    text-transform: uppercase
+    margin-top: v.to-rem(4)
+
+    @include v.media('tablet')
+      font-size: v.to-rem(14)
+
+  &__partners
+    text-align: center
+
+    @include v.media('tablet')
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
+      bottom: v.to-rem(100)
+
+    p
+      text-transform: uppercase
+      font-size: v.to-rem(14)
+      line-height: v.to-rem(24)
+      font-weight: 700
+      color: #5E7AA5
+      margin: 0 0 v.to-rem(20)
+
+    .swiper
+      width: v.to-rem(275)
+      img
+        width: 100%
+        opacity: 0.5
+        filter: grayscale(1)
