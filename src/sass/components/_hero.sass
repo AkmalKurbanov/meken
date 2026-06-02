@@ -67,7 +67,7 @@
     @include v.media('large')
       padding-top: v.to-rem(50)
 
-    h1,p
+    h1,.hero__slogan
       font-size: v.to-rem(30)
       line-height: v.to-rem(35)
       color: #fff
@@ -111,14 +111,14 @@
       margin: auto
       margin-top: v.to-rem(40)
 
-    h2
-      font-size: v.to-rem(14)
-      font-weight: 600
-      line-height: v.to-rem(20)
-      color: rgba(255, 255, 255, 0.70)
-      margin: v.to-rem(20) 0 v.to-rem(16)
-      margin: 0
-      line-height: v.to-rem(24)
+  &__sub
+    font-size: v.to-rem(14)
+    font-weight: 600
+    line-height: v.to-rem(20)
+    color: rgba(255, 255, 255, 0.70)
+    margin: v.to-rem(20) 0 v.to-rem(16)
+    margin: 0
+    line-height: v.to-rem(24)
 
   &__slogan
     position: relative
@@ -218,11 +218,10 @@
   &__category
     text-align: center
     transform-origin: center
-    
+
     button
       cursor: pointer
 
-    
     &:first-child
       transform: rotate(-8deg)
 
@@ -266,7 +265,6 @@
         .icon
           width: v.to-rem(14)
           height: v.to-rem(14)
-
 
   &__category-name
     font-size: v.to-rem(8.76)
