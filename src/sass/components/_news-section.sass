@@ -1,0 +1,33 @@
+@use '../settings/shared' as v
+
+.news
+  padding: v.to-rem(80) 0
+
+  @include v.media('large')
+    padding: v.to-rem(160) 0
+
+  .filter-tabs-wrap
+    margin-bottom: v.to-rem(56)
+
+  &__flex-wrap
+    @include v.media('tablet')
+      display: flex
+      flex-wrap: wrap
+      gap: v.to-rem(32)
+
+    .news-card
+      margin-bottom: v.to-rem(24)
+      &:last-child
+        margin-bottom: 0
+
+      @include v.media('tablet')
+        width: calc( 50% - 16px )
+
+      @include v.media('desktop')
+        width: calc( 33.33% - 21.9px )
+
+  .btn-wrap
+    margin-top: v.to-rem(24)
+    .btn
+      max-width: v.to-rem(227)
+      width: 100%

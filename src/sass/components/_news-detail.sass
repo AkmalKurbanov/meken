@@ -1,0 +1,31 @@
+@use '../settings/shared' as v
+
+.news-detail
+  padding-top: v.to-rem(16)
+  max-width: v.to-rem(932)
+  width: 100%
+  margin: 0 auto
+  &__banner
+    border-radius: v.to-rem(24)
+    position: relative
+    margin-bottom: v.to-rem(16)
+    overflow: hidden
+    display: flex
+    align-items: center
+    justify-content: center
+
+    img
+      width: 100%
+      object-fit: cover
+
+  &__title
+    font-size: v.to-rem(15.4)
+    @include v.media('desktop')
+      font-size: v.to-rem(18)
+    @include v.media('large')
+      font-size: v.to-rem(22)
+      line-height: v.to-rem(32)
+
+  p
+    font-size: v.to-rem(15.4)
+    line-height: v.to-rem(24)

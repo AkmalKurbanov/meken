@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   base: '/meken/',
@@ -13,6 +14,17 @@ export default defineConfig({
     }
   },
 
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'images/docs/*',
+          dest: 'images/docs'
+        }
+      ]
+    })
+  ],
+
   build: {
     outDir: '../dist',
     emptyOutDir: true,
@@ -24,24 +36,24 @@ export default defineConfig({
       },
       output: {
         entryFileNames: 'js/[name].js',
-        chunkFileNames: (chunkInfo) => {
-          if (chunkInfo.name === 'anchor' || chunkInfo.isEntry) {
-            return 'js/[name].js';
-          }
-          return 'js/[name].js';
-        },
+        chunkFileNames: 'js/[name].js',
         assetFileNames: (assetInfo) => {
           if (assetInfo.name && assetInfo.name.endsWith('.css')) {
             return 'css/[name].[ext]';
           }
           return 'assets/[name].[ext]';
         },
-        manualChunks: (id) => {
-          if (id.includes('src/js/news.js') || id.includes('news')) {
-            return 'newsdetail';
+        
+        manualChunks: (id, { getModuleInfo }) => {
+          if (id.endsWith('.css') || id.endsWith('.scss') || id.endsWith('.sass')) {
+            return null;
           }
-        },
-        experimentalMinChunkSize: 500000
+
+          const moduleInfo = getModuleInfo(id);
+          if (moduleInfo && moduleInfo.importers.length > 1) {
+            return 'core';
+          }
+        }
       }
     }
   }
