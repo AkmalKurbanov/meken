@@ -63,12 +63,12 @@
             alt="Экосистема “MEKEN”"
           />
         </a>
-        <nav class="header__nav">
+        <nav class="header__nav js-scroll-nav">
           <ul>
-            <li class="active"><a href="index.html#about">О нас</a></li>
+            <li><a href="index.html#about">О нас</a></li>
             <li><a href="index.html#investors">Инвесторам</a></li>
             <li><a href="index.html#news">Новости</a></li>
-            <li><a href="index.html#contacts">Контакты</a></li>
+            <li><a href="news.html#contacts">Контакты</a></li>
           </ul>
         </nav>
 
@@ -110,12 +110,12 @@
     </header>
 
     <div class="menu" id="menu">
-      <nav class="menu__nav">
+      <nav class="menu__nav js-scroll-nav">
         <ul>
           <li><a href="index.html#about">О нас</a></li>
           <li><a href="index.html#investors">Инвесторам</a></li>
           <li><a href="index.html#news">Новости</a></li>
-          <li><a href="index.html#contacts">Контакты</a></li>
+          <li><a href="news.html#contacts">Контакты</a></li>
         </ul>
       </nav>
       <div class="controls">
@@ -144,11 +144,15 @@
     </div>
 
     <main class="main">
-      <section class="news-detail">
+      <article class="news-detail">
         <div class="container">
-          <div class="news-detail__banner">
-            <img src="/images/news/news-detail.webp" alt="" />
-          </div>
+          <figure class="news-detail__banner">
+            <img
+              src="/images/news/news-detail.webp"
+              alt="Схема работы блокчейна U-LAN L2"
+            />
+            <!-- <figcaption class="sr-only">Схема архитектуры второго уровня сети U-LAN</figcaption> -->
+          </figure>
           <span class="tag tag--blue">Технологии</span>
 
           <h1 class="news-detail__title">
@@ -188,7 +192,7 @@
             повторяющихся абзацей или "невозможных" слов.
           </p>
         </div>
-      </section>
+      </article>
 
       <section class="callback">
         <div class="container">
@@ -489,8 +493,6 @@
         </div>
       </div>
     </div>
-
-   
 
     <script type="module" src="./js/news.js"></script>
   </body>

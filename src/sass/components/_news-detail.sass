@@ -6,16 +6,23 @@
   width: 100%
   margin: 0 auto
   &__banner
+    width: 100%
+    max-height: v.to-rem(244)
     border-radius: v.to-rem(24)
     position: relative
+    margin: 0
     margin-bottom: v.to-rem(16)
     overflow: hidden
     display: flex
     align-items: center
     justify-content: center
+    
+    @include v.media('tablet')
+      max-height: v.to-rem(434)
 
     img
       width: 100%
+      height: 100%
       object-fit: cover
 
   &__title

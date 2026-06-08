@@ -1,60 +1,84 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { defineConfig } from "vite";
+import { resolve } from "path";
 
 export default defineConfig({
-  base: '/meken/',
-  root: 'src',
+  // Делаем все пути относительными
+  base: "./",
+  root: "src",
 
   css: {
     preprocessorOptions: {
-      sass: { 
-        additionalData: `@use "/sass/settings/variables" as *\n`
-      }
-    }
+      sass: {
+        additionalData: `@use "/sass/settings/variables" as *\n`,
+      },
+    },
   },
 
-  plugins: [
-    viteStaticCopy({
-      targets: [
-        {
-          src: 'images/docs/*',
-          dest: 'images/docs'
-        }
-      ]
-    })
-  ],
+  // Заставляем Vite в скомпилированном CSS использовать только относительные пути к ассетам
+  experimental: {
+    renderBuiltUrl(filename, { type }) {
+      if (type === "asset") {
+        return { relative: true };
+      }
+    },
+  },
 
   build: {
-    outDir: '../dist',
+    outDir: "../dist",
     emptyOutDir: true,
     modulePreload: false,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'src/index.html'),
-        newsdetail: resolve(__dirname, 'src/news.html'),
+        main: resolve(__dirname, "src/index.html"),
+        newsdetail: resolve(__dirname, "src/news.html"),
+        privacypolicy: resolve(__dirname, "src/privacy-policy.html"),
       },
       output: {
-        entryFileNames: 'js/[name].js',
-        chunkFileNames: 'js/[name].js',
+        // 1. Скрипты летят в assets/js/
+        entryFileNames: "assets/js/[name].js",
+        chunkFileNames: "assets/js/[name].js",
+
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'css/[name].[ext]';
+          // 2. Стили летят в assets/css/
+          if (assetInfo.name && assetInfo.name.endsWith(".css")) {
+            return "assets/css/[name].[ext]";
           }
-          return 'assets/[name].[ext]';
+
+          // 3. Шрифты летят в assets/fonts/
+          if (
+            assetInfo.name &&
+            /\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)
+          ) {
+            return "assets/fonts/[name].[ext]";
+          }
+
+          // 4. Картинки летят в assets/images/
+          if (
+            assetInfo.name &&
+            /\.(png|jpe?g|gif|svg|webp|ico)$/i.test(assetInfo.name)
+          ) {
+            return "assets/images/[name].[ext]";
+          }
+
+          // Дефолтный путь для остальных файлов
+          return "assets/[name].[ext]";
         },
-        
+
         manualChunks: (id, { getModuleInfo }) => {
-          if (id.endsWith('.css') || id.endsWith('.scss') || id.endsWith('.sass')) {
+          if (
+            id.endsWith(".css") ||
+            id.endsWith(".scss") ||
+            id.endsWith(".sass")
+          ) {
             return null;
           }
 
           const moduleInfo = getModuleInfo(id);
           if (moduleInfo && moduleInfo.importers.length > 1) {
-            return 'core';
+            return "core";
           }
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 });

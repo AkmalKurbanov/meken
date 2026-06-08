@@ -10,6 +10,9 @@
     display: flex
     align-items: center
     justify-content: center
+    max-width: v.to-rem(122)
+    width: 100%
+    height: v.to-rem(32)
 
     @include v.media('desktop')
       max-width: v.to-rem(213)
@@ -17,8 +20,9 @@
       height: v.to-rem(56)
       img
         width: 100%
-        object-fit: cover
         height: 100%
+        object-fit: contain
+        object-position: left center
 
   &__flex-wrap
     display: flex
@@ -44,8 +48,7 @@
       height: v.to-rem(32)
 
     .icon-cross
-      display: none  
-      
+      display: none
 
   &__nav
     display: none
@@ -67,7 +70,7 @@
       background-color: rgba(0,0,0,0.2)
       border-radius: v.to-rem(56)
       padding: v.to-rem(4) v.to-rem(12)
-      
+
       li
         a
           text-decoration: none

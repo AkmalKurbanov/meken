@@ -13,8 +13,7 @@
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "sass": "^1.100.0",
-    "vite": "^8.0.12",
-    "vite-plugin-static-copy": "^4.1.0"
+    "vite": "^8.0.12"
   },
   "dependencies": {
     "@fancyapps/ui": "^6.1.14",

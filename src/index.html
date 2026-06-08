@@ -59,9 +59,9 @@
             alt="Экосистема “MEKEN”"
           />
         </a>
-        <nav class="header__nav">
+        <nav class="header__nav js-scroll-nav">
           <ul>
-            <li class="active"><a href="#about">О нас</a></li>
+            <li><a href="#about">О нас</a></li>
             <li><a href="#investors">Инвесторам</a></li>
             <li><a href="#news">Новости</a></li>
             <li><a href="#contacts">Контакты</a></li>
@@ -106,7 +106,7 @@
     </header>
 
     <div class="menu" id="menu">
-      <nav class="menu__nav">
+      <nav class="menu__nav js-scroll-nav">
         <ul>
           <li><a href="#about">О нас</a></li>
           <li><a href="#investors">Инвесторам</a></li>
@@ -292,10 +292,16 @@
           <div class="swiper hero-swiper-js">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="/images/hero/partners.webp" alt="Логотип партнера экосистемы MEKEN" />
+                <img
+                  src="/images/hero/partners.webp"
+                  alt="Логотип партнера экосистемы MEKEN"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="/images/hero/partners.webp" alt="Логотип партнера экосистемы MEKEN" />
+                <img
+                  src="/images/public/logo.svg"
+                  alt="Логотип партнера экосистемы MEKEN"
+                />
               </div>
             </div>
           </div>
@@ -323,10 +329,7 @@
       <section class="about" id="about">
         <div class="container">
           <div class="about__intro">
-            <img
-              src="/images/public/about-intro.webp"
-              alt="Экосистема Мекен"
-            />
+            <img src="/images/public/about-intro.webp" alt="Экосистема Мекен" />
             <p>
               МЕКЕН — это первая в <i>Кыргызстане</i> <br />
               экосистема, где цифровые решения и реальный бизнес работают как
@@ -550,6 +553,7 @@
           </div>
         </div>
       </section>
+      
       <section class="grid" id="investors">
         <div class="container">
           <div class="parent">
@@ -1167,15 +1171,24 @@
               </p>
             </div>
             <form action="">
-              <div class="input">
-                <input type="text" name="name" id="name" required />
-                <label for="name">Имя <span>*</span></label>
+              <div class="input-wrap">
+                <div class="input">
+                  <input type="text" name="name" id="name" required />
+                  <label for="name">Имя <span>*</span></label>
+                </div>
+                <span
+                data-validate-for="name"
+                class="text-danger"
+                style="color: #ff6b6b; font-size: 13px"
+                >error</span>
               </div>
+              <div class="input-wrap">
               <div class="input">
                 <input type="text" name="messenger" id="messenger" required />
                 <label for="messenger"
                   >Telegram / WhatsApp <span>*</span></label
                 >
+              </div>
               </div>
               <div class="callback-form__add-info">
                 <button class="btn">Оставить заявку</button>
@@ -1194,15 +1207,17 @@
     <footer class="footer">
       <div class="footer__top">
         <div class="container">
-          <a href="#" class="footer__logo">
-            <img
-              src="/images/public/logo.svg"
-              width="137"
-              height="36"
-              alt="Экосистема “MEKEN”"
-            />
-          </a>
           <div class="footer__flex-wrap">
+            <div class="footer__flex-item">
+              <a href="#" class="footer__logo">
+                <img
+                  src="/images/public/logo.svg"
+                  width="137"
+                  height="36"
+                  alt="Экосистема “MEKEN”"
+                />
+              </a>
+            </div>
             <div class="footer__flex-item">
               <p>
                 Инвестиционная экосистема нового поколения: энергия, ресурсы,
@@ -1210,11 +1225,25 @@
               </p>
             </div>
             <div class="footer__flex-item">
-              <address>
-                Адрес: Кыргызская Республика, г. Бишкек, ул. Киевская 190, БЦ
-                «Айтур», 5 этаж.
+              <address class="footer__contacts-item">
+                <svg class="icon">
+                  <use href="/icons.svg#marker"></use>
+                </svg>
+                Кыргызская Республика, г. Бишкек, ул. Киевская 190, БЦ «Айтур»,
+                5 этаж.
               </address>
-              <a href="mailto:info@ulan.asia">Email: info@ulan.asia</a>
+              <a class="footer__contacts-item" href="mailto:info@ulan.asia">
+                <svg class="icon">
+                  <use href="/icons.svg#envelope"></use>
+                </svg>
+                <span>info@ulan.asia</span>
+              </a>
+              <a class="footer__contacts-item" href="tel:+996707320607">
+                <svg class="icon">
+                  <use href="/icons.svg#mobile"></use>
+                </svg>
+                <span>+996 707 320 607</span>
+              </a>
               <div>
                 <ul class="social">
                   <li>

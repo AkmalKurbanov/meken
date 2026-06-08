@@ -17,6 +17,11 @@
 
     .news-card
       margin-bottom: v.to-rem(24)
+      display: none
+
+      &:nth-child(-n+6)
+        display: block
+
       &:last-child
         margin-bottom: 0
 

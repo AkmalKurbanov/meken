@@ -6,6 +6,9 @@ import "swiper/css/effect-fade";
 var swiper = new Swiper(".hero-swiper-js", {
   modules: [Autoplay, EffectFade],
   effect: "fade",
+  fadeEffect: {
+    crossFade: true
+  },
   allowTouchMove: false,
   simulateTouch: false,
   spaceBetween: 30,
